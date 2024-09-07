@@ -11,4 +11,5 @@ This Project is developed in Python, basic Html & CSS
 - Open the browser and go to the url https://localhost:5000 (if not, you can find the path in the terminal) 
 - After Submitting the form your data catalog has been saved to catalog.db
 - To access the catalog list, you can go to url https://localhost:5000/view you will have the list of all the catalog forms.
+- you can delete the catalog by clicking on Cross emoji.
 ![Logo](./Output/View1.png)
