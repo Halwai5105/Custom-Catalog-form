@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halwai Catalog</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('/static/BG.png');
+            font-family: cursive;
+            font-weight: 900;
+        }
+        .navbar-brand{
+            margin-left: 20px;
+            width: 200%;
+            height: 200%;
+        }
+        .navbar{
+            text-align: center;
+            background-color: aliceblue;
+        }
+        .viewport{
+            color:brown;
+        }
+        .container {
+            margin-top: 20px;
+            background-color: aliceblue;
+            padding: 40px;
+            border-radius: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 900;
+        }
+        .navbar-brand img{
+            width :20%;
+            max-height: 10%;
+            border-radius: 30px;
+        }
+        footer{
+            background-color: aliceblue;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+            font-size: large;
+            color:grey;
+            font-weight: lighter
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <a class="navbar-brand" href="#">
+            <img src="/static/HALWAI.png" alt="Logo">
+        </a>
+    </nav>
+    
+    <div class="container">
+        <h2>Add Catalog Item</h2>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert alert-success" role="alert">
+              {{ messages[0] }}
+            </div>
+          {% endif %}
+        {% endwith %}
+        
+        <form method="POST" action="/submit" class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required>
+                <div class="invalid-feedback">Please provide a name.</div>
+            </div>
+            <div class="form-group">
+                <label for="center">Center/Area</label>
+                <input type="text" class="form-control" id="center" name="center" placeholder="Enter center/area" required>
+                <div class="invalid-feedback">Please provide a center/area.</div>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label><br>
+                <input type="radio" id="male" name="gender" value="Male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female" required>
+                <label for="female">Female</label>
+                <div class="invalid-feedback">Please select a gender.</div>
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+                <div class="invalid-feedback">Please provide a date.</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <footer>
+        <label>@copyright | Harsh Halwai</label>
+    </footer>
+    <script>
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+</html>
